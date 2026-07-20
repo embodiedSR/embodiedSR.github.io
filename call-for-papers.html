@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Call for Papers · 2nd ESR Workshop at NeurIPS 2026</title>
+<meta name="description" content="Call for Papers for the 2nd Embodied Spatial Reasoning (ESR) Workshop at NeurIPS 2026 — scope, topics, format, review process, and key dates." />
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)" />
+
+<script>
+  /* Resolve the theme before first paint so there is no flash of the wrong palette. */
+  (function () {
+    var saved;
+    try { saved = localStorage.getItem('esr-theme'); } catch (e) {}
+    var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', saved === 'light' || saved === 'dark' ? saved : system);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ==========================================================================
+     Header
+     ========================================================================== -->
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="header__brand" href="index.html">ESR · NeurIPS 2026</a>
+
+    <div class="header__right">
+      <nav class="header__nav" aria-label="Sections">
+        <a href="index.html#about">About</a>
+        <a href="index.html#speakers">Speakers</a>
+        <a href="index.html#schedule">Schedule</a>
+        <a href="index.html#submission">Submission</a>
+        <a href="index.html#awards">Awards</a>
+        <a href="index.html#organizers">Organizers</a>
+        <a class="ext" href="https://sites.google.com/view/esr-iccv2025/home" target="_blank" rel="noopener">1st Edition ↗</a>
+      </nav>
+
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch between light and dark theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" />
+          <path d="M12 1.8v2.4M12 19.8v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" />
+        </svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ==========================================================================
+       Title
+       ========================================================================== -->
+  <section class="title title--page">
+    <div class="wrap">
+      <a class="backlink" href="index.html">Back to homepage</a>
+
+      <p class="title__eyebrow">2nd ESR Workshop · NeurIPS 2026</p>
+
+      <h1>
+        <span class="line-1">Call for</span>
+        <span class="line-2">Papers</span>
+      </h1>
+
+      <p class="title__lede">
+        We welcome work on spatial understanding, reasoning, and generation for embodied agents and world models —
+        new methods, benchmarks, analyses, and position papers.
+      </p>
+
+      <p class="title__meta">
+        <span>Deadline Sep 5, 2026</span>
+        <span>4–8 pages</span>
+        <span>Non-archival</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Scope
+       ========================================================================== -->
+  <section class="section" id="scope">
+    <div class="wrap section__grid">
+      <div class="section__aside"><p class="section__label">Scope</p></div>
+      <div class="section__main">
+        <h2>What we are looking for</h2>
+        <div class="section__body prose">
+          <p class="lead">
+            <strong>Embodied spatial reasoning</strong> is the ability to interpret the positions, orientations,
+            physical properties, and temporal dynamics of an agent and its surrounding objects in 3D space.
+          </p>
+          <p>
+            Work on this topic remains fragmented: embodied agents derive spatial reasoning from multimodal alignment,
+            while world models extract priors from video, with no shared interface for spatial, physical, and temporal
+            modeling. The paper track invites submissions that address this gap — from new methods and benchmarks to
+            analyses and position papers that reframe the problem.
+          </p>
+          <p>
+            Both long and short submissions are welcome. We uphold high standards of review, with impartial and
+            constructive feedback for every submission.
+          </p>
+        </div>
+
+        <div class="topics block">
+          <p class="topics__label">Topics of interest</p>
+          <ol>
+            <li><b>01</b> Spatial understanding and reasoning in embodied agents</li>
+            <li><b>02</b> Physically-grounded video world models</li>
+            <li><b>03</b> Object permanence and spatial memory</li>
+            <li><b>04</b> Physical consistency and long-horizon temporal coherence</li>
+            <li><b>05</b> Generative and discriminative 3D modeling</li>
+            <li><b>06</b> Long-horizon planning and interaction in 3D space</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Guidelines
+       ========================================================================== -->
+  <section class="section" id="guidelines">
+    <div class="wrap section__grid">
+      <div class="section__aside"><p class="section__label">Guidelines</p></div>
+      <div class="section__main">
+        <h2>Submission guidelines</h2>
+        <div class="section__body">
+          <ul class="guidelines">
+            <li>
+              <span class="key">Template</span>
+              <span>
+                Use the NeurIPS 2026 template, following the official
+                <a href="https://neurips.cc/Conferences/2026/CallForPapers" target="_blank" rel="noopener">NeurIPS 2026 Call for Papers ↗</a>.
+              </span>
+            </li>
+            <li>
+              <span class="key">Length</span>
+              <span>Submissions of 4–8 pages are allowed.</span>
+            </li>
+            <li>
+              <span class="key">Publication</span>
+              <span>This work will be non-archival.</span>
+            </li>
+            <li>
+              <span class="key">Review</span>
+              <span>
+                An estimated 30–50 submissions will be reviewed by a committee of 10 members, supported by
+                30–50 reviewers.
+              </span>
+            </li>
+            <li>
+              <span class="key">Presentation</span>
+              <span>Accepted papers are presented as orals or posters at the workshop.</span>
+            </li>
+          </ul>
+          <!-- TODO: add anonymity / dual-submission / supplementary-material policy once decided -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Key dates
+       ========================================================================== -->
+  <section class="section" id="dates">
+    <div class="wrap section__grid">
+      <div class="section__aside"><p class="section__label">Key dates</p></div>
+      <div class="section__main">
+        <h2>Submission timeline</h2>
+        <div class="section__body">
+          <ol class="htimeline">
+            <li class="htl">
+              <span class="d">Jul 25, 2026</span>
+              <span class="l">Submissions open</span>
+            </li>
+            <li class="htl is-deadline">
+              <span class="d">Sep 5, 2026</span>
+              <span class="l">Submission deadline</span>
+            </li>
+            <li class="htl">
+              <span class="d">Sep 25, 2026</span>
+              <span class="l">Acceptance notification</span>
+            </li>
+            <li class="htl">
+              <span class="d">Oct 15, 2026</span>
+              <span class="l">Award notification</span>
+            </li>
+            <li class="htl">
+              <span class="d">Oct 25, 2026</span>
+              <span class="l">Camera-ready</span>
+            </li>
+          </ol>
+          <p class="tl-note">All deadlines are 23:59 Anywhere on Earth (AoE).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Submit
+       ========================================================================== -->
+  <section class="section" id="submit">
+    <div class="wrap section__grid">
+      <div class="section__aside"><p class="section__label">Submit</p></div>
+      <div class="section__main">
+        <h2>Submit a paper</h2>
+        <div class="section__body">
+          <div class="sub-links">
+            <!-- TODO: replace href with the OpenReview venue link once the portal is created -->
+            <a class="sub-link" href="#" target="_blank" rel="noopener">
+              <span>
+                <span class="sub-link__name">Paper Submission</span>
+                <span class="sub-link__host">OpenReview.net</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+            <a class="sub-link" href="call-for-demos.html">
+              <span>
+                <span class="sub-link__name">Submitting a demo instead?</span>
+                <span class="sub-link__host" style="color: var(--muted)">Call for Demos</span>
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==========================================================================
+     Footer
+     ========================================================================== -->
+<footer class="footer">
+  <div class="wrap footer__row">
+    <span>© 2026 Embodied Spatial Reasoning Workshop · <a href="mailto:wufeim@gmail.com">wufeim@gmail.com</a></span>
+    <span><a href="index.html">Back to homepage</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('esr-theme', next); } catch (e) {}
+  });
+</script>
+
+</body>
+</html>
