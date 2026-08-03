@@ -339,6 +339,19 @@ p { margin: 0; }
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(28px, 3.4vw, 38px) clamp(16px, 2vw, 24px);
 }
+/* Five speakers on one row — the shared four-up grid would orphan the fifth.
+   Only above the 900px breakpoint, where the responsive rules below take over. */
+@media (min-width: 901px) {
+  .people--five {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    /* a tighter column gap buys the width the longest name needs to hold one line */
+    column-gap: 16px;
+  }
+  .people--five .person img { width: 84px; height: 84px; }
+  .people--five .person__name { margin-top: 13px; font-size: 14px; }
+  .people--five .person__aff { font-size: 13px; }
+}
+
 .person { display: block; color: inherit; }
 .person:hover { text-decoration: none; }
 .person img {
@@ -491,6 +504,9 @@ p { margin: 0; }
   color: var(--ink-2);
 }
 
+/* a status pill closing out a guidelines list needs its own breathing room */
+.guidelines + .note { margin-top: 24px; }
+
 /* ==========================================================================
    Sub-page: back link + track list
    ========================================================================== */
@@ -595,6 +611,29 @@ p { margin: 0; }
   transition: stroke 0.16s ease, transform 0.16s ease;
 }
 .sub-link:hover svg { stroke: var(--ink); transform: translate(2px, -2px); }
+
+/* Portal not open yet — same card, but inert: no link, no hover affordance.
+   The dashed border reads as "placeholder" next to the solid live cards. */
+.sub-link--soon {
+  border-style: dashed;
+  cursor: default;
+}
+.sub-link--soon:hover { border-color: var(--line); transform: none; }
+.sub-link--soon .sub-link__name { color: var(--ink-2); }
+.sub-link--soon .sub-link__host { color: var(--muted); }
+
+.sub-link__badge {
+  flex: none;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--muted);
+}
 
 /* ==========================================================================
    Program committee
