@@ -173,7 +173,10 @@ li { list-style: none; }
 /* ==========================================================================
    Speakers
    ========================================================================== */
-.speakers { margin-top: 32px; }
+/* Section rhythm on the 4:5 canvas is looser than the other two ratios: with
+   the topics list gone there is height to spare, and spreading it across the
+   stack reads better than letting it pool above the footer. */
+.speakers { margin-top: 44px; }
 .speakers__grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -220,7 +223,7 @@ li { list-style: none; }
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
   gap: 52px;
-  margin-top: 32px;
+  margin-top: 44px;
 }
 
 .tracks { margin-top: 20px; display: grid; gap: 16px; }
@@ -263,54 +266,49 @@ li { list-style: none; }
 .dates .is-deadline .d { color: var(--accent); }
 
 /* ==========================================================================
-   Topics — the site's numbered two-column list
-   ========================================================================== */
-.topics { margin-top: 32px; }
-.topics ol {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 52px;
-  margin-top: 2px;
-}
-.topics li {
-  display: flex;
-  gap: 14px;
-  padding: 11px 2px;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-  line-height: 1.4;
-  color: var(--ink);
-}
-.topics li b {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--accent);
-  padding-top: 3px;
-}
-
-/* ==========================================================================
    Organizers
    ========================================================================== */
-.orgs { margin-top: 32px; }
+.orgs { margin-top: 44px; }
+/* Ten organizers, five-up: two even rows instead of the 4+4+2 a four-column
+   grid would leave. Names still hold one line at this column width. */
 .orgs__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px 24px;
-  margin-top: 20px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 30px 20px;
+  margin-top: 22px;
+}
+/* Same portrait-over-name stack as the speakers, one notch smaller — the
+   organizers are a supporting credit, not the headline. */
+.org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.org img {
+  flex: none;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--panel);
+  border: 1px solid var(--line);
 }
 .org__name {
-  font-size: 17px;
+  margin-top: 12px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.25;
+  text-wrap: balance;
 }
 .org__aff {
   margin-top: 3px;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.35;
   color: var(--muted);
+  text-wrap: balance;
 }
 
 /* ==========================================================================
@@ -347,8 +345,8 @@ li { list-style: none; }
 
 /* ==========================================================================
    1:1 variant — 1200×1200, for Instagram / square crops.
-   300px shorter than the default, so the type tightens one notch and the
-   topics list drops out; everything else survives.
+   300px shorter than the default, so the type and the portraits tighten one
+   notch; everything else survives unchanged.
    ========================================================================== */
 .canvas--square { height: 1200px; padding: 46px 56px 44px; }
 .canvas--square .head { padding-top: 22px; }
@@ -367,8 +365,11 @@ li { list-style: none; }
 .canvas--square .track__desc { font-size: 14.5px; }
 .canvas--square .dates li { padding: 11px 2px; }
 .canvas--square .dates .l { font-size: 16px; }
-.canvas--square .topics { display: none; }
 .canvas--square .orgs { margin-top: 24px; }
+.canvas--square .orgs__grid { gap: 22px 18px; margin-top: 20px; }
+.canvas--square .org img { width: 64px; height: 64px; }
+.canvas--square .org__name { margin-top: 11px; font-size: 15px; }
+.canvas--square .org__aff { font-size: 13px; }
 .canvas--square .foot { padding-top: 20px; }
 .canvas--square .foot__url { font-size: 28px; }
 
@@ -387,13 +388,14 @@ li { list-style: none; }
   grid-template-rows: auto auto auto 1fr auto;
   column-gap: 44px;
   /* The speakers column spans both upper content rows, so the title block and
-     the four portraits balance instead of leaving a hole under the TL;DR. */
+     the five portraits balance instead of leaving a hole under the TL;DR.
+     With topics gone, organizers take the full-width band above the footer. */
   grid-template-areas:
-    "mast   mast   mast"
-    "head   head   spk"
-    "cfp    dates  spk"
-    "topics topics orgs"
-    "foot   foot   foot";
+    "mast mast  mast"
+    "head head  spk"
+    "cfp  dates spk"
+    "orgs orgs  orgs"
+    "foot foot  foot";
 }
 .canvas--wide .mast   { grid-area: mast; }
 .canvas--wide .head   { grid-area: head; }
@@ -401,7 +403,6 @@ li { list-style: none; }
 .canvas--wide .split  { display: contents; }
 .canvas--wide .cfp    { grid-area: cfp; }
 .canvas--wide .when   { grid-area: dates; }
-.canvas--wide .topics { grid-area: topics; }
 .canvas--wide .orgs   { grid-area: orgs; }
 .canvas--wide .foot   { grid-area: foot; }
 
@@ -419,8 +420,7 @@ li { list-style: none; }
 .canvas--wide .spk__name { margin-top: 0; font-size: 16px; }
 .canvas--wide .spk__aff { font-size: 13.5px; }
 
-.canvas--wide .cfp, .canvas--wide .when, .canvas--wide .topics { margin-top: 18px; }
-.canvas--wide .topics ol { column-gap: 44px; }
+.canvas--wide .cfp, .canvas--wide .when { margin-top: 18px; }
 .canvas--wide .tracks { margin-top: 14px; gap: 10px; }
 .canvas--wide .track { padding: 11px 16px; }
 .canvas--wide .track__name { font-size: 16px; }
@@ -428,14 +428,15 @@ li { list-style: none; }
 .canvas--wide .dates li { padding: 10px 2px; }
 .canvas--wide .dates .l { font-size: 15px; }
 .canvas--wide .dates .d { font-size: 14px; }
-.canvas--wide .topics li { padding: 7px 2px; font-size: 15px; }
 
-/* The organizers column is a third of the canvas wide in 16:9, so the eight
-   names go two-up and the affiliations drop — the names alone carry it. */
+/* Organizers span the full canvas in 16:9 but only get a short band of height,
+   so each one turns sideways: portrait beside the name, five per row. */
 .canvas--wide .orgs { margin-top: 18px; }
-.canvas--wide .orgs__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin-top: 16px; }
-.canvas--wide .org__name { font-size: 15px; }
-.canvas--wide .org__aff { display: none; }
+.canvas--wide .orgs__grid { gap: 14px 24px; margin-top: 16px; }
+.canvas--wide .org { flex-direction: row; align-items: center; text-align: left; gap: 12px; }
+.canvas--wide .org img { width: 44px; height: 44px; }
+.canvas--wide .org__name { margin-top: 0; font-size: 15px; }
+.canvas--wide .org__aff { font-size: 13px; }
 
 .canvas--wide .foot { padding-top: 16px; }
 .canvas--wide .foot__url { font-size: 27px; }
@@ -581,31 +582,50 @@ li { list-style: none; }
     </section>
   </div>
 
-  <section class="topics">
-    <p class="label">Topics of interest</p>
-    <div class="rule"></div>
-    <ol>
-      <li><b>01</b> Spatial understanding and reasoning in embodied agents</li>
-      <li><b>02</b> Physically-grounded video world models</li>
-      <li><b>03</b> Object permanence and spatial memory</li>
-      <li><b>04</b> Physical consistency and temporal coherence</li>
-      <li><b>05</b> Generative and discriminative 3D modeling</li>
-      <li><b>06</b> Long-horizon planning and interaction in 3D space</li>
-    </ol>
-  </section>
-
   <section class="orgs">
     <p class="label">Organizers</p>
     <div class="rule"></div>
     <div class="orgs__grid">
-      <div><p class="org__name">Wufei Ma</p><p class="org__aff">Johns Hopkins</p></div>
-      <div><p class="org__name">Haoyu Chen</p><p class="org__aff">Harvard</p></div>
-      <div><p class="org__name">Hunar Batra</p><p class="org__aff">Oxford</p></div>
-      <div><p class="org__name">Tommie Kerssies</p><p class="org__aff">TU Eindhoven</p></div>
-      <div><p class="org__name">Yu-Cheng Chou</p><p class="org__aff">Johns Hopkins</p></div>
-      <div><p class="org__name">Adam Kortylewski</p><p class="org__aff">CISPA</p></div>
-      <div><p class="org__name">Yilun Du</p><p class="org__aff">Harvard</p></div>
-      <div><p class="org__name">Alan Yuille</p><p class="org__aff">Johns Hopkins</p></div>
+      <div class="org">
+        <img src="images/people/wufei-ma.jpg" alt="Wufei Ma" width="480" height="480" />
+        <div><p class="org__name">Wufei Ma</p><p class="org__aff">Johns Hopkins</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/haoyu-chen.jpg" alt="Haoyu Chen" width="480" height="479" />
+        <div><p class="org__name">Haoyu Chen</p><p class="org__aff">Harvard</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/hunar-batra.jpg" alt="Hunar Batra" width="480" height="480" />
+        <div><p class="org__name">Hunar Batra</p><p class="org__aff">Oxford</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/tommie-kerssies.jpg" alt="Tommie Kerssies" width="480" height="480" />
+        <div><p class="org__name">Tommie Kerssies</p><p class="org__aff">TU Eindhoven</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/ju-he.jpg" alt="Ju He" width="600" height="600" />
+        <div><p class="org__name">Ju He</p><p class="org__aff">Apple</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/yucheng-chou.jpg" alt="Yu-Cheng Chou" width="480" height="480" />
+        <div><p class="org__name">Yu-Cheng Chou</p><p class="org__aff">Johns Hopkins</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/tiezheng-zhang.jpg" alt="Tiezheng Zhang" width="480" height="480" />
+        <div><p class="org__name">Tiezheng Zhang</p><p class="org__aff">Johns Hopkins</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/adam-kortylewski.jpg" alt="Adam Kortylewski" width="396" height="480" />
+        <div><p class="org__name">Adam Kortylewski</p><p class="org__aff">CISPA</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/yilun-du.jpg" alt="Yilun Du" width="480" height="480" />
+        <div><p class="org__name">Yilun Du</p><p class="org__aff">Harvard</p></div>
+      </div>
+      <div class="org">
+        <img src="images/people/alan-yuille.jpg" alt="Alan Yuille" width="300" height="200" />
+        <div><p class="org__name">Alan Yuille</p><p class="org__aff">Johns Hopkins</p></div>
+      </div>
     </div>
   </section>
 
