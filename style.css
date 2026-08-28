@@ -211,8 +211,25 @@ p { margin: 0; }
   margin-top: clamp(28px, 3.5vw, 40px);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
+/* Host-institution lockups ride the far end of the CTA row: `margin-left: auto`
+   balances the buttons without adding a band of its own, and the hairline keeps
+   the marks read as a caption rather than as two more actions. Both sources are
+   cropped to their ink, so one shared height gives matching optical weight. */
+.title__logos {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+}
+.title__logos img { display: block; width: auto; height: 26px; }
+/* Both lockups are dark-on-light artwork; on the dark palette they are knocked
+   out to a flat white, which costs the Harvard crimson but keeps them legible. */
+:root[data-theme="dark"] .title__logos img { filter: brightness(0) invert(1); }
 
 .btn {
   display: inline-flex;
@@ -727,6 +744,16 @@ p { margin: 0; }
 }
 
 @media (max-width: 760px) {
+  /* the CTA row can no longer hold buttons and lockups side by side, so the
+     logos drop to their own line and re-align with the left edge */
+  .title__logos {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 6px;
+    padding-left: 0;
+    border-left: none;
+  }
+
   /* five columns can't hold their labels here, so the rail becomes a stacked list */
   .htimeline { grid-template-columns: 1fr; margin-bottom: 14px; }
   .htimeline::before { display: none; }
