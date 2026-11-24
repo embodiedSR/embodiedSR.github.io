@@ -525,6 +525,42 @@ p { margin: 0; }
 .guidelines + .note { margin-top: 24px; }
 
 /* ==========================================================================
+   Schedule
+   ========================================================================== */
+.sched { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.sched li {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 2px;
+  border-top: 1px solid var(--line);
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.sched .t {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.sched .who { display: block; margin-top: 2px; font-weight: 600; }
+.sched .is-talk .e { color: var(--ink-2); }
+.sched .is-talk .who { color: var(--ink); font-size: 16.5px; }
+.sched .is-break { background: var(--panel); }
+.sched .is-break .e { color: var(--muted); }
+
+/* ==========================================================================
+   Accepted papers / demos — compact list
+   ========================================================================== */
+.pubs { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.pubs li { padding: 9px 2px; border-top: 1px solid var(--line); line-height: 1.4; }
+.pubs .pt { display: block; font-size: 15px; font-weight: 500; color: var(--ink); }
+.pubs .pa { display: block; margin-top: 2px; font-size: 13px; color: var(--muted); }
+
+/* ==========================================================================
    Sub-page: back link + track list
    ========================================================================== */
 .backlink {
@@ -779,6 +815,7 @@ p { margin: 0; }
   .timeline li { grid-template-columns: 1fr auto; }
   .timeline .date { grid-column: 1 / -1; }
   .guidelines li { grid-template-columns: 1fr; gap: 4px; }
+  .sched li { grid-template-columns: 1fr; gap: 2px; }
 }
 
 @media (max-width: 560px) {
